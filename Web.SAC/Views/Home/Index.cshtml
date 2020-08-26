@@ -1,0 +1,95 @@
+﻿<div class="container" ng-controller="clienteController">
+    <div class="panel panel-info">
+        <div class="row">
+            <br>
+        </div>
+        <div class="panel-heading">Lista de Clientes Cadastrados</div>
+
+        <div class="panel-body">
+            <button type="button" class="btn btn-info" data-target="#AdicionarCliente" data-toggle="modal">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+
+        <table class="table table-bordered">
+            <thead style="background-color: #F6F4F3;">
+                <tr>
+                    <th class="text-center">Id Cliente</th>
+                    <th class="text-center">Nome</th>
+                    <th class="text-center">Usuário</th>
+                    <th class="text-center">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cliente in Clientes">
+                    <td class="text-center">{{cliente.ClienteId}}</td>
+                    <td class="text-center">{{cliente.Nome}}</td>
+                    <td class="text-center">{{cliente.Usuario}}</td>
+                    <td class="text-center">{{cliente.Email}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    @* Inicio Modal - Adicionar CLiente*@
+
+    <div class="modal" id="AdicionarCliente" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="text-info">Adicionar Cliente</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" id="clienteForm" name="clienteForm" novalidate>
+                        <div>
+                            <input class="form-control" readonly="readonly" name="clienteId" type="hidden" placeholder="Id Cliente" />
+                        </div>
+
+                        <div>
+                            <input class="form-control" type="text" name="nome" ng-model="nome" placeholder="Nome do Cliente" required maxlength="100" />
+                            <span ng-show="clienteForm.nome.$dirty && clienteForm.nome.$error.required">Nome é requerido</span>
+                        </div>
+                        <div>
+                            <input class="form-control" type="text" name="usuario" ng-model="usuario" placeholder="Usuario" ng-required="required" maxlength="20" />
+                            <span ng-show="clienteForm.usuario.$dirty && clienteForm.usuario.$error.required">Nome é requerido</span>
+                        </div>
+                        <div>
+                            <input class="form-control" type="email" name="email" ng-model="email" placeholder="E-mail do Cliente" required maxlength="50" />
+                            <span ng-show="clienteForm.email.$dirty && clienteForm.email.$error.required">Nome é requerido</span>
+                        </div>
+                        <div>
+                            <input class="form-control" type="email" name="emailConfirmacao" ng-model="emailConfirmacao" placeholder="Confirmação do e-mail" required maxlength="50" />
+                            <span ng-show="clienteForm.emailConfirmacao.$dirty && clienteForm.emailConfirmacao.$error.required">Nome é requerido</span>
+                            <span ng-show="clienteForm.emailConfirmacao != clienteForm.email">E-mail não é correspondente</span>
+
+                        </div>
+                        <div>
+                            <input class="form-control" type="password" name="senha" ng-model="senha" placeholder="Senha" required maxlength="18" />
+                            <span ng-show="clienteForm.nome.$dirty && clienteForm.nome.$error.required">Nome é requerido</span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-primary" id="btnSalvar"  data-dismiss="modal" ng-click="adicionarCliente()" ng-disabled="!clienteForm.$valid">Adicionar</button>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="limparDados()">Fechar</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @* Fim Modal - Adicionar CLiente*@
+
+
+</div>
+
+@section scripts{
+    <script src="~/AngulaJsApp/Cliente/Module.js"></script>
+    <script src="~/AngulaJsApp/Cliente/Service.js"></script>
+    <script src="~/AngulaJsApp/Cliente/Controller.js"></script>
+
+}

@@ -1,0 +1,23 @@
+USE [C:\USERS\SANTOS.11099\SOURCE\REPOS\SAC.PHARMA.CO\WEB.SAC\APP_DATA\CLIENTES.MDF]
+GO
+
+/****** Object:  Table [dbo].[Cliente]    Script Date: 2020-08-26 00:10:20 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Cliente](
+	[ClienteId] [int] IDENTITY(1,1) NOT NULL,
+	[Nome] [nvarchar](100) NOT NULL,
+	[Usuario] [nvarchar](50) NOT NULL,
+	[Email] [nvarchar](50) NOT NULL,
+	[Senha] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ClienteId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
